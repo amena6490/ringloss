@@ -1,4 +1,8 @@
 # Ring Loss
+Modified based on:
+Ring loss: Convex Feature Normalization for Face Recognition
+https://arxiv.org/abs/1803.00130
+
 ## Getting Started
 Install PyTorch and Python.
 Download ringloss.py to your working directory. 
@@ -20,3 +24,5 @@ total_loss.backward()
 
 ## Training
 During training, a pretrained model is suggested, since Ring loss may be unstable in the beginning. 
+
+## Results
