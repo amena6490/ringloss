@@ -10,7 +10,7 @@ Download ringloss.py to your working directory.
 ## Usage
 Initialize a RingLoss module
 ```
-ringloss_block = RingLoss(type='ratio', loss_weight=1.0)
+ringloss_block = RingLoss(type='auto', loss_weight=1.0)
 ```
 During forward
 ```
