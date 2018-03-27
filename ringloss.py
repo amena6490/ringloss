@@ -6,8 +6,8 @@ from torch.nn.parameter import Parameter
 
 class RingLoss(nn.Module):
     def __init__(self, type='auto', loss_weight=1.0):
-    # type: type of loss ('l1', 'l2', 'ratio')
-    # loss_weight: weight of loss, for 'l1' and 'l2', try with 0.01. For 'ratio', try with 1.0.
+    # type: type of loss ('l1', 'l2', 'auto')
+    # loss_weight: weight of loss, for 'l1' and 'l2', try with 0.01. For 'auto', try with 1.0.
         super(RingLoss, self).__init__()
         self.radius = Parameter(torch.Tensor(1))
         self.radius.data.fill_(-1)
