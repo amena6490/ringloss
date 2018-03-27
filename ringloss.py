@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from torch.nn.parameter import Parameter
 
 class RingLoss(nn.Module):
-    def __init__(self, type='ratio', loss_weight=1.0):
+    def __init__(self, type='auto', loss_weight=1.0):
     # type: type of loss ('l1', 'l2', 'ratio')
     # loss_weight: weight of loss, for 'l1' and 'l2', try with 0.01. For 'ratio', try with 1.0.
         super(RingLoss, self).__init__()
@@ -22,7 +22,7 @@ class RingLoss(nn.Module):
             loss1 = F.smooth_l1_loss(x, self.radius.expand_as(x)).mul_(self.loss_weight)
             loss2 = F.smooth_l1_loss(self.radius.expand_as(x), x).mul_(self.loss_weight)
             ringloss = loss1 + loss2
-        elif self.type == 'ratio': # Divide the L2 Loss by the feature's own norm
+        elif self.type == 'auto': # Divide the L2 Loss by the feature's own norm
             diff = x.sub(self.radius.expand_as(x)) / (x.mean().detach().clamp(min=0.5))
             diff_sq = torch.pow(torch.abs(diff), 2).mean()
             ringloss = diff_sq.mul_(self.loss_weight)
