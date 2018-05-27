@@ -7,7 +7,13 @@ https://arxiv.org/abs/1803.00130
 Install PyTorch and Python.
 Download ringloss.py to your working directory. 
 
-## Usage
+## Training for MNIST example script
+In terminal type:
+```
+python mnist_example.py
+```
+
+## Usage of RingLoss module
 Initialize a RingLoss module
 ```
 ringloss_block = RingLoss(type='auto', loss_weight=1.0)
