@@ -29,7 +29,7 @@ class LeNet(nn.Module):
         self.conv3_2 = nn.Conv2d(128, 128, kernel_size=5, padding=2)
         self.prelu3_2 = nn.PReLU()
         self.fc1 = nn.Linear(1152, self.feat_size, bias=False)
-        self.softmax = AngleSoftmax(self.feat_size, output_size=10, normalize=True)
+        self.softmax = SoftmaxLoss(self.feat_size, output_size=10, normalize=True)
         self.ringloss = RingLoss(type='auto', loss_weight=1.0)
 
         if cuda:
