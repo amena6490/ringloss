@@ -16,7 +16,7 @@ class SoftmaxLoss(nn.Module):
 
     def forward(self, x, y):
         if self.normalize:
-            self.fc.weight.renorm(2, 1, 1e-5).mul(1e5)
+            self.fc.weight.renorm(2, 0, 1e-5).mul(1e5)
         prob = F.log_softmax(self.fc(x), dim=1)
         self.prob = prob
         loss = F.nll_loss(prob, y)
